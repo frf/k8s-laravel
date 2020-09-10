@@ -1,0 +1,46 @@
+version: '3.5'
+services:
+  php:
+    image: fabiorf/laravel-74-k8s:latest
+    restart: always
+    env_file:
+      - .env #Adiciona toda sua variavel já no linux
+    environment:
+      - ENV_TEST="Teste de Variavel" # variavel adicional
+    ports:
+      - 8000:8000
+    #command: php artisan serve --host=0.0.0.0 # caso queira executar comando
+
+### SUBIR BANCO DE DADOS
+
+#  db:
+#    image: mysql:5.7
+#    container_name: travellist-db
+#    restart: unless-stopped
+#    environment:
+#      MYSQL_DATABASE: ${DB_DATABASE}
+#      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+#      MYSQL_PASSWORD: ${DB_PASSWORD}
+#      MYSQL_USER: ${DB_USERNAME}
+#      SERVICE_TAGS: dev
+#      SERVICE_NAME: mysql
+#    volumes:
+#      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+#    networks:
+#      - travellist
+#
+#  nginx:
+#    image: nginx:alpine
+#    container_name: travellist-nginx
+#    restart: unless-stopped
+#    ports:
+#      - "8000:80"
+#    volumes:
+#      - ./:/var/www
+#      - ./docker-compose/nginx:/etc/nginx/conf.d
+#    networks:
+#      - travellist
+#
+#networks:
+#  travellist:
+#    driver: bridge

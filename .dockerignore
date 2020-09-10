@@ -1,0 +1,9 @@
+.git
+.idea
+.env.prod
+k8s
+/vendor
+node_modules
+storage/framework/cache/**
+storage/framework/sessions/**
+storage/framework/views/**
